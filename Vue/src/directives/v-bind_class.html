@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V-Bind</title>
+  <style>
+    .active {color:red;}
+    .line {text-decoration:underline;}
+  </style>
+</head>
+
+<body>
+
+<div id="app">
+  <h2 v-bind:class="getClass()">身在美利坚，心是中国心</h2>
+  <button @click="classActive()">切换样式</button>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  setTimeout(function() {
+    const app = new Vue({
+      el: "#app",
+      data: {
+        isActive: false,
+        isLine: true
+      },
+      methods: {
+        classActive: function() {
+          this.isActive = !this.isActive
+          this.isLine = !this.isLine
+        },
+        getClass: function() {
+          return {active:this.isActive, line:this.isLine}
+        }
+      }
+    })
+  }, 1000)
+
+</script>
+
+</body>
+
+</html>

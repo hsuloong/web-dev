@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V-Bind</title>
+</head>
+
+<body>
+
+<div id="app">
+  <img v-bind:src="imgUrl">川建国</img>
+  <br></br>
+  <img :src="imgUrl">川建国</img>
+  <br></br>
+  <a v-bind:href="url">百度一下</a>
+  <br></br>
+  <a :href="url">百度一下</a>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  setTimeout(function() {
+    const app = new Vue({
+      el: "#app",
+      data: {
+        imgUrl: "https://cn.bing.com/th?id=OIP.mLqDx6vgcR3Ux3PmJqMUJgHaEo&pid=Api&rs=1",
+        url:"https://ww.baidu.com",
+      }
+    })
+  }, 1000)
+
+</script>
+
+</body>
+
+</html>

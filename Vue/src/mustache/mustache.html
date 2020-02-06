@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mustache</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h2>In China:{{lastName + firstName}}</h2>
+  <h2>In Us:{{firstName + lastName}}</h2>
+  <h2>Double Counter:{{counter * 2}}</h2>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      firstName: "慈欣",
+      lastName: "刘",
+      counter: 3
+    }
+  })
+</script>
+
+</body>
+
+</html>

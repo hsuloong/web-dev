@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V-Bind</title>
+  <style>
+    .active {color:red;}
+  </style>
+</head>
+
+<body>
+
+<div id="app">
+  <ul>
+    <li v-for="movie in movies" :class="{active:movie.isActive}" @click="movie.isActive=onClick()">{{movie.name}}</li>
+  </ul>
+
+  <br></br>
+  <ul>
+    <li v-for="(movie,index) in movies">{{index}}-{{movie.name}}</li>
+  </ul>
+
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  setTimeout(function() {
+    const app = new Vue({
+      el: "#app",
+      data: {
+        isActive: false,
+        movies: [{name:'肖申克的救赎', isActive:false},
+                 {name:'我的三体', isActive:false},
+                 {name:'镇魂街', isActive:false}, 
+                 {name:'刺客五六七', isActive:false}]
+      },
+      methods: {
+        onClick: function(isActive) {
+          for (i = 0; i < this.movies.length; i++) {
+            this.movies[i].isActive = false
+          }
+          return true
+        }
+      }
+    })
+  }, 1000)
+
+</script>
+
+</body>
+
+</html>
