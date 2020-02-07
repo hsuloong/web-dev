@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computed</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h2>{{lastName + " " + firstName}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{fullName}}</h2>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  setTimeout(function() {
+    const app = new Vue({
+      el: "#app",
+      data: {
+        firstName: '慈欣',
+        lastName: '刘'
+      },
+      methods: {
+        getFullName() {
+          return this.lastName + ' ' + this.firstName
+        }
+      },
+      computed: {
+        fullName: function() {
+          return this.lastName + ' ' + this.firstName
+        }
+      }
+    })
+  }, 1000)
+
+</script>
+
+</body>
+
+</html>

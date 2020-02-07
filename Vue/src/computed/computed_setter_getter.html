@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computed</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h2>全名为:{{fullName}}</h2>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      firstName: "慈欣",
+      lastName: "刘"
+    },
+    computed: {
+      fullName: {
+        // 计算属性一般没有set方法
+        set: function(newValue) {
+          names = newValue.split(" ")
+          if (names.length == 2) {
+            this.lastName = names[0]
+            this.firstName = names[1]
+          }
+        },
+        get: function() {
+          return this.lastName + "" + this.firstName
+        }
+      }
+    }
+  })
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h2>Div记数:{{divCounter}}</h2>
+  <h2>Btn记数:{{btnCounter}}</h2>
+  <h2>Submit记数:{{subCounter}}</h2>
+  <h2>Keyup记数:{{keyupCounter}}</h2>
+  <h2>BtnOnce记数:{{btnOnceCounter}}</h2>
+  
+  <!-- 事件冒泡 -->
+  <div @click="divClick">
+    <button @click="btnClick">按钮1</button>
+  </div>
+
+  <br></br>
+
+  <!-- 阻止事件冒泡 -->
+  <div @click="divClick">
+    <button @click.stop="btnClick">按钮2</button>
+  </div>
+
+  <br></br>
+
+  <form action="submit.html">
+    请输入：<input type='text' name="baidu">
+    <input type="submit" value="提交1" @click="submit">
+  </form>
+
+  <br></br>
+
+  <!-- 阻止默认行为 -->
+  <form action="submit.html">
+    请输入：<input type='text' name="baidu" @keyup="keyup">
+    <input type="submit" value="提交2" @click.prevent="submit">
+  </form>
+
+  <br></br>
+
+  <!-- 只触发一次 -->
+  <button @click.once="btnClick2">按钮3</button>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      divCounter: 0,
+      btnCounter: 10,
+      subCounter: 20,
+      keyupCounter: 30,
+      btnOnceCounter: 40
+    },
+    methods: {
+      divClick() {
+        ++this.divCounter
+      },
+      btnClick() {
+        ++this.btnCounter
+      },
+      submit() {
+        ++this.subCounter
+      },
+      keyup() {
+        ++this.keyupCounter;
+      },
+      btnClick2() {
+        ++this.btnOnceCounter
+      }
+    }
+  })
+</script>
+
+</body>
+
+</html>

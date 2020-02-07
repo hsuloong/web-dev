@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V-On</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h2>记数:{{counter}}</h2>
+  <button @click="btnClick1">按钮1</button>
+  <button @click="btnClick2">按钮2</button>
+  <button @click="btnClick2()">按钮3</button>
+  <button @keyup.tab="btnClick2">按钮4</button>
+
+  <br></br>
+
+  <button @click="btnClick3('Vue', $event)">按钮5</button>
+  
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      counter: 0
+    },
+    methods: {
+      btnClick1() {
+        ++this.counter
+      },
+      btnClick2(event) {
+        ++this.counter
+        console.log(event)
+      },
+      btnClick3(userDefine, event) {
+        console.log(userDefine, event)
+      }
+    }
+  })
+</script>
+
+</body>
+
+</html>
