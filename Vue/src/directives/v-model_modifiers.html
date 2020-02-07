@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V-Model</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h5>{{message}}</h5>
+  <!-- lazy加载 -->
+  <input type="text" v-model.lazy="message">
+
+  <br></br>
+  <h5>{{typeof number}}</h5>
+  <input type="number" v-model="number">
+
+  <br></br>
+  <!-- number保持 -->
+  <h5>{{typeof number1}}</h5>
+  <input type="number" v-model.number="number1">
+
+  <br></br>
+  <!-- trim自动去除空白 -->
+  <h5>{{trimString}}</h5>
+  <input type="text" v-model.trim="trimString">
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  setTimeout(function() {
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: 'Hello, Vue!',
+        number: 0,
+        number1: 0,
+        trimString: ''
+      }
+    })
+  }, 1000)
+
+</script>
+
+</body>
+
+</html>

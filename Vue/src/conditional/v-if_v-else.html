@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V-If_V-Else_V-V-Else-If</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h2 v-if="isShow">isShow为true，展示我</h2>
+  <h2 v-else>isShow为false，展示我</h2>
+  <button @click="changeShow">切换展示</button>
+  
+  <br></br>
+
+  <h2 v-if="showCount===0">showCount为0，展示我</h2>
+  <h2 v-else-if="showCount==1">showCount为1，展示我</h2>
+  <h2 v-else>showCount为2，展示我</h2>
+  <button @click="changeShowCount">切换展示</button>
+
+  <br></br>
+
+  <span v-if="isNameLogin">
+    <label for="username">用户账号</label>
+    <input type="text" id="username" placeholder="用户账号">
+  </span>
+  <span v-else>
+    <label for="email">用户邮箱</label>
+    <input type="text" id="email" placeholder="用户邮箱">
+  </span>
+
+  <br></br>
+
+  <span v-if="isNameLogin">
+    <label for="username">用户账号</label>
+    <input type="text" id="username" placeholder="用户账号" key="username">
+  </span>
+  <span v-else>
+    <label for="email">用户邮箱</label>
+    <input type="text" id="email" placeholder="用户邮箱" key="email">
+  </span>
+
+  <br></br>
+
+  <button @click="changeLoginAccount">切换登陆方式</button>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      isShow: false,
+      showCount: 0,
+      isNameLogin: true
+    },
+    methods: {
+      changeShow() {
+        this.isShow = !this.isShow
+      },
+      changeShowCount() {
+        this.showCount = (this.showCount+1)%3
+      },
+      changeLoginAccount() {
+        this.isNameLogin = !this.isNameLogin
+      }
+    }
+  })
+</script>
+
+</body>
+
+</html>

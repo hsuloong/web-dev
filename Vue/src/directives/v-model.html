@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>V-Model</title>
+</head>
+
+<body>
+
+<div id="app">
+  <h5>{{message}}</h5>
+  <input type="text" v-model="message">
+  <!-- v-model=v-bind+v-on -->
+  <input type="text" :value="message" @input="valueChange($event)">
+
+  <br></br>
+  <h5>{{hobbies}}</h5>
+  <input type="checkbox" value="篮球" v-model="hobbies">篮球
+  <input type="checkbox" value="足球" v-model="hobbies">足球
+  <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+  <input type="checkbox" value="兵乓球" v-model="hobbies">兵乓球
+
+  <br></br>
+  <h5>{{fruit}}</h5>
+  <select name="select" id="" v-model="fruit">
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="葡萄">葡萄</option>
+  </select>
+
+  <br></br>
+  <h5>{{fruits}}</h5>
+  <select name="select" id="" v-model="fruits" multiple>
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="葡萄">葡萄</option>
+  </select>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  setTimeout(function() {
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: 'Hello, Vue!',
+        hobbies: [],
+        fruit: '葡萄',
+        fruits: []
+      },
+      methods: {
+        valueChange(event) {
+          this.message = event.target.value
+        }
+      }
+    })
+  }, 1000)
+
+</script>
+
+</body>
+
+</html>
