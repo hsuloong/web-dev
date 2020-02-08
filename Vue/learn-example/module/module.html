@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module</title>
+</head>
+
+<body>
+
+<template id="tVueTemplate">
+  <div>
+    <slot :data="dmovies">
+      <ul>
+        <li v-for="movie in dmovies">{{movie}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<div id="app">
+
+<h1>Javascript模块化</h2>
+
+</div>
+
+<script src="module.js" type="module"></script>
+<script src="import.js" type="module"></script>
+
+</body>
+
+</html>
