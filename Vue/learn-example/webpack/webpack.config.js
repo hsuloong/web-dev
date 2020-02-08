@@ -1,5 +1,6 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
@@ -54,7 +55,8 @@ module.exports = {
   },
   plugins: [
     // 请确保引入这个插件！
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.BannerPlugin('最终版权归***所有')
   ],
   resolve: {
     alias: {
