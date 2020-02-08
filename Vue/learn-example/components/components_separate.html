@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components</title>
+</head>
+
+<body>
+
+<script type="text/x-template" id="vueTemplate">
+  <div>
+    <h2>Vue组件</h2>
+  </div>
+</script>
+
+<template id="tVueTemplate">
+  <div>
+    <h2>Vue组件T</h2>
+  </div>
+</template>
+
+<div id="app">
+
+<cps></cps>
+<tcps></tcps>
+
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  Vue.component('cps', {
+    template: "#vueTemplate"
+  })
+
+  Vue.component('tcps', {
+    template: "#tVueTemplate"
+  })
+
+  const app = new Vue({
+    el: "#app",
+  })
+
+</script>
+
+</body>
+
+</html>

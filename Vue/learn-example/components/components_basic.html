@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components</title>
+</head>
+
+<body>
+
+<div id="app">
+  <cps></cps>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const cps = Vue.extend({
+    template: '<div><h2>Vue组件</h2></div>'
+  })
+  // 全局组件
+  // Vue.component("cps", cps)
+  const app = new Vue({
+    el: "#app",
+    components: { //局部组件
+      cps: cps
+    }
+  })
+
+</script>
+
+</body>
+
+</html>

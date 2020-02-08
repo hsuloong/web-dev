@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components</title>
+</head>
+
+<body>
+
+<template id="tVueTemplate">
+  <div>
+    <h2>Vue子组件</h2>
+    <h2>{{smovies}}</h2>
+    <h2>{{smessage}}</h2>
+  </div>
+</template>
+
+<div id="app">
+
+<tcps v-bind:smovies="movies" v-bind:smessage="message"></tcps>
+
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const tcps = Vue.extend({
+    template: "#tVueTemplate",
+    // props: ['smovies', 'smessage'],
+    props: {
+      smovies: {
+        type: Array,
+        default() { 
+          return ['肖申克的救赎', '我不是药神'] }
+      }, 
+      smessage: {
+        type: String,
+        default: 'Hi, Vue!',
+        required: true
+      }
+    },
+    data() {
+      return {}
+    }
+  })
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello, Vue!",
+      movies: ['肖申克的救赎', '大话西游', '我不是药神']
+    },
+    components: {
+      tcps
+    }
+  })
+
+</script>
+
+</body>
+
+</html>

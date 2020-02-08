@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components</title>
+</head>
+
+<body>
+
+<template id="tVueTemplate">
+  <div>
+    <h2>Vue子组件</h2>
+    <h2>Vue子组件Data的Movies：{{dmovies}}</h2>
+    <h2>Vue子组件Data的Message：{{dmessage}}</h2>
+    <input type="text" v-model:value="dmessage">
+    <h2>Vue子组件Props的Movies：{{smovies}}</h2>
+    <h2>Vue子组件Props的Message：{{smessage}}</h2>
+  </div>
+</template>
+
+<div id="app">
+
+<h2>Vue实例的Message：{{message}}</h2>
+
+<tcps v-bind:smovies="movies" v-bind:smessage="message" @userinput="messageChange"></tcps>
+
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const tcps = Vue.extend({
+    template: "#tVueTemplate",
+    // props: ['smovies', 'smessage'],
+    props: {
+      smovies: {
+        type: Array,
+        default() { 
+          return ['肖申克的救赎', '我不是药神'] }
+      }, 
+      smessage: {
+        type: String,
+        default: 'Hi, Vue!',
+        required: true
+      }
+    },
+    data() {
+      return {
+        dmessage:'Hello, Vue!',
+        dmovies: ['我的三体', '我不是药神']
+      }
+    },
+    watch: {
+      dmessage(newValue) {
+        this.$emit('userinput', newValue)
+      }
+    }
+  })
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello, Vue!",
+      movies: ['肖申克的救赎', '大话西游', '我不是药神']
+    },
+    components: {
+      tcps
+    },
+    methods: {
+      messageChange(newValue) {
+        this.message = newValue
+      }
+    }
+  })
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components</title>
+</head>
+
+<body>
+
+<div id="app">
+  <cps_father></cps_father>
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const cps_son = Vue.extend({
+    template: '<div><h2>Vue子组件</h2></div>'
+  })
+
+  const cps_father = Vue.extend({
+    template: '<div><h2>Vue父组件</h2><cps_son></cps_son></div>',
+    components: {
+      cps_son : cps_son
+    }
+  })
+
+  const app = new Vue({
+    el: "#app",
+    components: { //局部组件
+      cps_father: cps_father
+    }
+  })
+
+</script>
+
+</body>
+
+</html>

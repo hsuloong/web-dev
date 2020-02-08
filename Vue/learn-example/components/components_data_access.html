@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components</title>
+</head>
+
+<body>
+
+<template id="tVueTemplate">
+  <div>
+    <h2>{{title}}</h2>
+    <h2>当前计数：{{counter}}</h2>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+</template>
+
+<div id="app">
+
+<tcps></tcps>
+<tcps></tcps>
+<tcps></tcps>
+
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  Vue.component('tcps', {
+    template: "#tVueTemplate",
+    data() {
+      return {
+        title: "这是Vue组件的数据",
+        counter: 0
+      }
+    },
+    methods: {
+      increment() {
+        this.counter++
+      },
+      decrement() {
+        this.counter--
+      }
+    }
+  })
+
+  const app = new Vue({
+    el: "#app",
+  })
+
+</script>
+
+</body>
+
+</html>
