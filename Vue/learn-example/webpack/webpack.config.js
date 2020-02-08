@@ -2,13 +2,14 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path : path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: 'dist/'
+    filename: 'bundle.js'
+    // publicPath: 'dist/'
   },
   module: {
     rules: [
@@ -58,7 +59,10 @@ module.exports = {
     // 请确保引入这个插件！
     new VueLoaderPlugin(),
     new webpack.BannerPlugin('最终版权归***所有'),
-    new htmlWebpackPlugin()
+    new htmlWebpackPlugin({
+      template:'index.html'
+    }),
+    new uglifyJsPlugin()
   ],
   resolve: {
     alias: {
