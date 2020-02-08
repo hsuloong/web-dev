@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slot</title>
+</head>
+
+<body>
+
+<template id="tVueTemplate", >
+  <div>
+    <slot :data="dmovies">
+      <ul>
+        <li v-for="movie in dmovies">{{movie}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<div id="app">
+
+<tcps>
+  <template slot-scope="slotdata">
+    <span>{{slotdata.data.join(' - ')}}</span>
+  </template>
+</tcps>
+
+</div>
+
+<script src="../../static/js/vue.js"></script>
+<script>
+  const tcps = Vue.extend({
+    template: "#tVueTemplate",
+    props: {
+      smovies: {
+        type: Array,
+        default() { 
+          return ['肖申克的救赎', '我不是药神'] }
+      }
+    },
+    data() {
+      return {
+        dmovies: ['我的三体', '我不是药神']
+      }
+    }
+  })
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      movies: ['肖申克的救赎', '大话西游', '我不是药神']
+    },
+    components: {
+      tcps
+    }
+  })
+
+</script>
+
+</body>
+
+</html>
